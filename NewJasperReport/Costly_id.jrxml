@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Costly_id" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="34bff0bd-dda2-4a5d-a38c-6d55f8b18f17">
+	<queryString language="SQL">
+		<![CDATA[select Booking_id
+from bookinginfo
+where tariff in (select max(tariff)
+				from bookinginfo)]]>
+	</queryString>
+	<field name="Booking_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="Booking_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bookinginfo"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<summary>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="30" uuid="88e4f941-9e30-469f-b895-9352bf74b1b8"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Booking_id}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

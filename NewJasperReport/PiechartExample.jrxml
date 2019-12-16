@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PiechartExample" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="13a97ff3-2679-40eb-b4f5-a071d98b5c71">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SQL"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT count( Booking_id) ,
+	car_model 
+FROM bookinginfo
+group by car_model]]>
+	</queryString>
+	<field name="count( Booking_id)" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="count( Booking_id)"/>
+	</field>
+	<field name="car_model" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="car_model"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bookinginfo"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="60" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="60" backcolor="#FFFFFF" uuid="b21f30e3-8fe7-4a3a-ae2b-dd882e6d5281"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="30" y="10" width="480" height="40" uuid="d1ab61ea-7cd0-4104-8f3d-e475f81134d7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PIE CHART(NUMBER OF CAR VS CAR MODEL)]]></text>
+			</staticText>
+		</band>
+	</title>
+	<summary>
+		<band height="646">
+			<bar3DChart>
+				<chart evaluationTime="Report">
+					<reportElement x="0" y="370" width="554" height="276" uuid="ac1428fc-afbc-4e52-af6e-aa3e1584962f"/>
+					<box leftPadding="3" rightPadding="3">
+						<pen lineWidth="1.0"/>
+					</box>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{car_model}]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{car_model}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{count( Booking_id)}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<bar3DPlot>
+					<plot>
+						<seriesColor seriesOrder="0" color="#FC0814"/>
+						<seriesColor seriesOrder="1" color="#FC05F4"/>
+						<seriesColor seriesOrder="2" color="#4E0FFA"/>
+						<seriesColor seriesOrder="3" color="#F4FC0A"/>
+						<seriesColor seriesOrder="4" color="#11F7F0"/>
+					</plot>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</valueAxisFormat>
+				</bar3DPlot>
+			</bar3DChart>
+			<rectangle>
+				<reportElement x="0" y="320" width="554" height="50" uuid="7aab0d3d-80c5-4f56-90b2-a43fa94b49a9"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="80" y="330" width="428" height="30" uuid="57bfe9b6-9840-45c4-9bdd-d1842b9ffafc"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BAR CHART(NUMBER OF CAR VS CAR MODEL)]]></text>
+			</staticText>
+			<pie3DChart>
+				<chart evaluationTime="Report">
+					<reportElement x="0" y="0" width="555" height="300" uuid="5d3d6b6d-0143-4c3d-a9bb-be885c95c481"/>
+					<box leftPadding="2" rightPadding="2">
+						<pen lineWidth="1.0" lineStyle="Solid"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{car_model}]]></keyExpression>
+					<valueExpression><![CDATA[$F{count( Booking_id)}]]></valueExpression>
+					<labelExpression><![CDATA[$F{count( Booking_id)}+""]]></labelExpression>
+					<otherKeyExpression><![CDATA[]]></otherKeyExpression>
+					<otherLabelExpression><![CDATA[]]></otherLabelExpression>
+				</pieDataset>
+				<pie3DPlot>
+					<plot backcolor="#FCFAFA">
+						<seriesColor seriesOrder="0" color="#FA0C18"/>
+						<seriesColor seriesOrder="1" color="#FC17ED"/>
+						<seriesColor seriesOrder="2" color="#0F2AF7"/>
+						<seriesColor seriesOrder="3" color="#EAFA07"/>
+						<seriesColor seriesOrder="4" color="#11FAEE"/>
+					</plot>
+					<itemLabel>
+						<font size="20" isBold="true"/>
+					</itemLabel>
+				</pie3DPlot>
+			</pie3DChart>
+		</band>
+	</summary>
+</jasperReport>

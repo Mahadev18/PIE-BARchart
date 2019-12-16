@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="BarchartExample" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bc430c97-ad62-4247-9b41-960ff64693b8">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SQL"/>
+	<queryString language="SQL">
+		<![CDATA[select count(Booking_id) as id,
+car_model as car
+from bookinginfo
+group by car_model]]>
+	</queryString>
+	<field name="id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+	</field>
+	<field name="car" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="car"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bookinginfo"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="95" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="89" uuid="1dc40a34-55ac-4b9d-a280-c740fb3fcd49"/>
+				<graphicElement>
+					<pen lineColor="#FCFAFA"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="10" y="10" width="534" height="79" uuid="73261fcb-61c0-43fe-9bd1-64c3e3fb93d1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BAR CHART OF NUMBER OF CARS VS CAR MODEL]]></text>
+			</staticText>
+		</band>
+	</title>
+	<summary>
+		<band height="306" splitType="Stretch">
+			<bar3DChart>
+				<chart evaluationTime="Report">
+					<reportElement x="0" y="0" width="555" height="306" uuid="3ae27015-e79a-42cd-b075-55636b3c695c"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{car}]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{car}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{id}]]></valueExpression>
+						<labelExpression><![CDATA[$F{car}]]></labelExpression>
+					</categorySeries>
+				</categoryDataset>
+				<bar3DPlot>
+					<plot>
+						<seriesColor seriesOrder="0" color="#16F4F7"/>
+						<seriesColor seriesOrder="1" color="#55F25D"/>
+						<seriesColor seriesOrder="2" color="#FA6041"/>
+						<seriesColor seriesOrder="3" color="#FA23EF"/>
+						<seriesColor seriesOrder="4" color="#F4FC03"/>
+					</plot>
+					<itemLabel>
+						<font size="16" isBold="true"/>
+					</itemLabel>
+					<categoryAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000">
+							<labelFont>
+								<font isBold="true"/>
+							</labelFont>
+							<tickLabelFont>
+								<font size="14" isBold="true"/>
+							</tickLabelFont>
+						</axisFormat>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" verticalTickLabels="false" axisLineColor="#000000">
+							<labelFont>
+								<font isBold="false"/>
+							</labelFont>
+							<tickLabelFont>
+								<font size="14" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+							</tickLabelFont>
+						</axisFormat>
+					</valueAxisFormat>
+				</bar3DPlot>
+			</bar3DChart>
+		</band>
+	</summary>
+</jasperReport>
